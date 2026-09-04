@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NEOCRAFT — Monde multijoueur</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main id="app">
+      <section id="landing" class="screen">
+        <div class="hero-card">
+          <div class="brand"><span class="cube-mark">◆</span><div><p class="eyebrow">SURVIE • CONSTRUCTION • MULTIJOUEUR</p><h1>NEO<span>CRAFT</span></h1></div></div>
+          <p class="intro">Un monde de blocs infini, généré à partir de votre graine. Construisez, survivez et invitez vos amis.</p>
+          <div class="form-grid"><label>Nom du joueur<input id="playerName" maxlength="18" value="Explorateur" /></label><label>Graine du monde<input id="seed" maxlength="24" value="neo-2026" /></label></div>
+          <div class="actions"><button class="primary" id="newWorld">Créer un monde</button><button class="secondary" id="joinWorld">Rejoindre ce monde</button></div>
+          <p class="hint">Le multijoueur local fonctionne entre les onglets de ce navigateur. Partagez la même graine pour explorer ensemble.</p>
+        </div>
+        <div class="landing-art"><div class="sun"></div><div class="mount mountain-a"></div><div class="mount mountain-b"></div><div class="pixel-trees">♣ &nbsp;♣ &nbsp;♣</div></div>
+      </section>
+
+      <section id="game" class="screen hidden">
+        <canvas id="world" aria-label="Monde 3D"></canvas>
+        <header class="topbar"><div><span class="status-dot"></span><strong id="worldName">MONDE</strong><small id="onlineCount">1 joueur connecté</small></div><div class="top-actions"><button id="saveBtn">Sauvegarder</button><button id="loadBtn">Charger</button><button id="helpBtn">?</button></div></header>
+        <div id="crosshair">+</div>
+        <aside class="left-hud"><div class="hud-panel"><p class="label">JOUR <span id="dayCount">01</span></p><div class="clock"><i id="clockHand"></i></div><p id="timeLabel">08:00</p></div><div class="hud-panel coords"><p class="label">POSITION</p><b id="coords">X 0 · Y 0 · Z 0</b><p id="biome">Plaines</p></div></aside>
+        <aside class="right-hud"><div class="objective"><p class="label">OBJECTIF</p><strong id="objectiveText">Récoltez du bois</strong><small id="objectiveSub">0 / 3 bûches</small></div><div class="players"><p class="label">EXPLORATEURS</p><div id="playerList"></div></div></aside>
+        <section class="craft-card" id="craftCard"><div class="craft-title"><div><p class="label">ÉTABLI</p><h2>Fabrication</h2></div><button class="close" id="closeCraft">×</button></div><div id="recipes"></div></section>
+        <section class="menu-card hidden" id="helpCard"><button class="close" id="closeHelp">×</button><p class="label">COMMANDES</p><h2>Comment survivre</h2><ul><li><kbd>W A S D</kbd> Se déplacer</li><li><kbd>Souris</kbd> Regarder autour</li><li><kbd>Clic gauche</kbd> Détruire un bloc / attaquer</li><li><kbd>Clic droit</kbd> Poser le bloc sélectionné</li><li><kbd>1–7</kbd> Choisir un emplacement</li><li><kbd>E</kbd> Ouvrir l’établi</li></ul><p>Les mobs sortent la nuit. Fabriquez une épée avant le coucher du soleil.</p></section>
+        <div id="toast"></div>
+        <footer class="bottom-hud"><div class="vitals"><div><span class="vital-label">PV</span><div class="hearts" id="hearts"></div></div><div><span class="vital-label">FAIM</span><div class="food" id="food"></div></div></div><div class="hotbar" id="hotbar"></div><div class="quick-tip"><kbd>E</kbd> fabriquer <span>•</span> <kbd>ESC</kbd> libérer la souris</div></footer>
+        <div id="damage"></div>
+      </section>
+    </main>
+    <script src="game.js"></script>
+  </body>
+</html>
